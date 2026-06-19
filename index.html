@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Astraea Career Mentor: Get your personalized, interactive roadmap to kickstart your career.">
+  <title>Astraea | Career Mentor & Interactive Roadmap Dashboard</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS Link -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  
+  <!-- Decorative Glow Accents -->
+  <div class="glow-accent glow-1" aria-hidden="true"></div>
+  <div class="glow-accent glow-2" aria-hidden="true"></div>
+
+  <!-- MAIN WRAPPER -->
+  <div class="app-container">
+
+    <!-- ONBOARDING WIZARD SCREEN -->
+    <main id="onboarding-screen" class="screen active">
+      <div class="onboarding-card glass-panel">
+        <header class="onboarding-header">
+          <div class="brand">
+            <span class="brand-logo" aria-hidden="true">✦</span>
+            <h1>Astraea</h1>
+          </div>
+          <p class="subtitle">Your Personalized Career Mentor & Roadmap Architect</p>
+        </header>
+
+        <!-- Stepper Progress Tracker -->
+        <nav class="stepper" aria-label="Onboarding Progress">
+          <ol class="stepper-list">
+            <li class="stepper-item active" id="step-indicator-1">
+              <span class="stepper-number">1</span>
+              <span class="stepper-label">Education</span>
+            </li>
+            <li class="stepper-item" id="step-indicator-2">
+              <span class="stepper-number">2</span>
+              <span class="stepper-label">Interests</span>
+            </li>
+            <li class="stepper-item" id="step-indicator-3">
+              <span class="stepper-number">3</span>
+              <span class="stepper-label">Role Target</span>
+            </li>
+          </ol>
+        </nav>
+
+        <!-- ONBOARDING FORM -->
+        <form id="onboarding-form" novalidate>
+          
+          <!-- STEP 1: Education & Background -->
+          <fieldset class="form-step active" id="step-content-1">
+            <legend class="visually-hidden">Educational Background</legend>
+            
+            <div class="step-headline">
+              <h2>What is your current educational background?</h2>
+              <p>We'll customize the speed and entry-point of your milestones accordingly.</p>
+            </div>
+
+            <div class="form-group">
+              <label class="group-label">Highest Qualification</label>
+              <div class="radio-grid" role="radiogroup" aria-required="true">
+                <label class="radio-card" for="edu-highschool">
+                  <input type="radio" id="edu-highschool" name="education" value="High School" required>
+                  <span class="radio-button-custom"></span>
+                  <span class="radio-content">
+                    <span class="radio-title">High School</span>
+                    <span class="radio-desc">Preparing for college or starting early.</span>
+                  </span>
+                </label>
+
+                <label class="radio-card" for="edu-stem">
+                  <input type="radio" id="edu-stem" name="education" value="Undergraduate (STEM)" required>
+                  <span class="radio-button-custom"></span>
+                  <span class="radio-content">
+                    <span class="radio-title">Undergrad (STEM)</span>
+                    <span class="radio-desc">Technical background, coding familiarity.</span>
+                  </span>
+                </label>
+
+                <label class="radio-card" for="edu-arts">
+                  <input type="radio" id="edu-arts" name="education" value="Undergraduate (Humanities/Arts)" required>
+                  <span class="radio-button-custom"></span>
+                  <span class="radio-content">
+                    <span class="radio-title">Undergrad (Arts/Biz)</span>
+                    <span class="radio-desc">Analytical, writing, or creative backgrounds.</span>
+                  </span>
+                </label>
+
+                <label class="radio-card" for="edu-postgrad">
+                  <input type="radio" id="edu-postgrad" name="education" value="Master's / Ph.D." required>
+                  <span class="radio-button-custom"></span>
+                  <span class="radio-content">
+                    <span class="radio-title">Postgraduate</span>
+                    <span class="radio-desc">Advanced researcher or specialized scholar.</span>
+                  </span>
+                </label>
+
+                <label class="radio-card" for="edu-selftaught">
+                  <input type="radio" id="edu-selftaught" name="education" value="Self-Taught" required>
+                  <span class="radio-button-custom"></span>
+                  <span class="radio-content">
+                    <span class="radio-title">Self-Taught / Bootcamp</span>
+                    <span class="radio-desc">Practical project-driven learner.</span>
+                  </span>
+                </label>
+              </div>
+              <span class="error-message" id="education-error" aria-live="polite"></span>
+            </div>
+
+            <div class="form-group field-group">
+              <label for="field-of-study">Major / Field of Study (Optional)</label>
+              <input type="text" id="field-of-study" name="fieldOfStudy" placeholder="e.g., Computer Science, Literature, Economics" autocomplete="off" enterkeyhint="next">
+              <span id="field-help" class="hint-text">Leave blank if not applicable.</span>
+            </div>
+          </fieldset>
+
+          <!-- STEP 2: Interests & Passions -->
+          <fieldset class="form-step" id="step-content-2">
+            <legend class="visually-hidden">Core Interests</legend>
+
+            <div class="step-headline">
+              <h2>What areas spark your curiosity the most?</h2>
+              <p>Select at least two. This aligns the mentorship advice to your profile strengths.</p>
+            </div>
+
+            <div class="form-group">
+              <label class="group-label">Core Interests (Select 2+)</label>
+              <div class="checkbox-grid">
+                
+                <label class="checkbox-card" for="interest-coding">
+                  <input type="checkbox" id="interest-coding" name="interests" value="Coding & Development" class="visually-hidden">
+                  <span class="checkbox-inner">
+                    <span class="checkbox-box"></span>
+                    <span class="checkbox-content">
+                      <span class="checkbox-title">Coding & System Building</span>
+                      <span class="checkbox-desc">Writing logic, automating files, compiling code.</span>
+                    </span>
+                  </span>
+                </label>
+
+                <label class="checkbox-card" for="interest-design">
+                  <input type="checkbox" id="interest-design" name="interests" value="Visual Design & UX" class="visually-hidden">
+                  <span class="checkbox-inner">
+                    <span class="checkbox-box"></span>
+                    <span class="checkbox-content">
+                      <span class="checkbox-title">Design & Aesthetics</span>
+                      <span class="checkbox-desc">Layout structures, colors, visual flow, animations.</span>
+                    </span>
+                  </span>
+                </label>
+
+                <label class="checkbox-card" for="interest-logic">
+                  <input type="checkbox" id="interest-logic" name="interests" value="Data Analytics & Logic" class="visually-hidden">
+                  <span class="checkbox-inner">
+                    <span class="checkbox-box"></span>
+                    <span class="checkbox-content">
+                      <span class="checkbox-title">Data, Math & Statistics</span>
+                      <span class="checkbox-desc">Solving riddles, finding patterns in Excel/DBs.</span>
+                    </span>
+                  </span>
+                </label>
+
+                <label class="checkbox-card" for="interest-product">
+                  <input type="checkbox" id="interest-product" name="interests" value="Product Strategy" class="visually-hidden">
+                  <span class="checkbox-inner">
+                    <span class="checkbox-box"></span>
+                    <span class="checkbox-content">
+                      <span class="checkbox-title">Product & Business Logic</span>
+                      <span class="checkbox-desc">Planning features, leading groups, customer empathy.</span>
+                    </span>
+                  </span>
+                </label>
+
+                <label class="checkbox-card" for="interest-writing">
+                  <input type="checkbox" id="interest-writing" name="interests" value="Technical Writing" class="visually-hidden">
+                  <span class="checkbox-inner">
+                    <span class="checkbox-box"></span>
+                    <span class="checkbox-content">
+                      <span class="checkbox-title">Writing & Documentation</span>
+                      <span class="checkbox-desc">Explaining technical workflows clearly to others.</span>
+                    </span>
+                  </span>
+                </label>
+
+                <label class="checkbox-card" for="interest-research">
+                  <input type="checkbox" id="interest-research" name="interests" value="Academic Research" class="visually-hidden">
+                  <span class="checkbox-inner">
+                    <span class="checkbox-box"></span>
+                    <span class="checkbox-content">
+                      <span class="checkbox-title">Deep Research & Science</span>
+                      <span class="checkbox-desc">Reading research papers, experimenting, hypothesis testing.</span>
+                    </span>
+                  </span>
+                </label>
+
+              </div>
+              <span class="error-message" id="interests-error" aria-live="polite"></span>
+            </div>
+          </fieldset>
+
+          <!-- STEP 3: Target Role -->
+          <fieldset class="form-step" id="step-content-3">
+            <legend class="visually-hidden">Career Goal</legend>
+
+            <div class="step-headline">
+              <h2>Select your target career path</h2>
+              <p>We'll construct a 6-month roadmap with milestones and resources matching this role.</p>
+            </div>
+
+            <div class="form-group">
+              <label for="target-role" class="group-label">Desired Professional Role</label>
+              
+              <!-- Select is recommended for 6+ exclusive options according to matrix -->
+              <div class="select-wrapper">
+                <select id="target-role" name="targetRole" required>
+                  <option value="" disabled selected>Choose a pathway...</option>
+                  <option value="software-engineer-frontend">Frontend Software Engineer</option>
+                  <option value="software-engineer-backend">Backend Software Engineer</option>
+                  <option value="data-scientist">Data Scientist / AI Engineer</option>
+                  <option value="ux-designer">UX/UI Designer</option>
+                  <option value="product-manager">Product Manager</option>
+                  <option value="technical-writer">Technical Writer</option>
+                </select>
+                <span class="select-arrow" aria-hidden="true">▼</span>
+              </div>
+              <span class="error-message" id="target-role-error" aria-live="polite"></span>
+            </div>
+
+            <div class="fit-insights-box" id="role-compatibility-preview">
+              <!-- Dynamically rendered visual indicator of how their choices fit the role -->
+            </div>
+          </fieldset>
+
+          <!-- Navigation Controls -->
+          <footer class="form-footer">
+            <button type="button" id="prev-btn" class="btn btn-secondary" disabled>
+              <span class="btn-icon">←</span> Back
+            </button>
+            <button type="button" id="next-btn" class="btn btn-primary">
+              Next <span class="btn-icon">→</span>
+            </button>
+            <button type="submit" id="submit-btn" class="btn btn-accent hidden">
+              Generate Roadmap <span class="btn-icon">✦</span>
+            </button>
+          </footer>
+
+        </form>
+      </div>
+    </main>
+
+    <!-- DASHBOARD VIEW SCREEN -->
+    <div id="dashboard-screen" class="screen">
+      
+      <!-- Side Navigation Panel -->
+      <aside class="sidebar glass-panel">
+        <div class="sidebar-brand">
+          <span class="brand-logo" aria-hidden="true">✦</span>
+          <h2>Astraea</h2>
+        </div>
+
+        <section class="profile-summary">
+          <h3>Personal Profile</h3>
+          <div class="profile-card">
+            <div class="avatar" id="profile-avatar">S</div>
+            <div class="profile-details">
+              <h4 id="user-display-name">Student</h4>
+              <p id="user-display-edu">High School</p>
+            </div>
+          </div>
+          <div class="profile-badge-list" id="user-display-interests">
+            <!-- Dynamic pills of interest -->
+          </div>
+        </section>
+
+        <nav class="sidebar-menu" aria-label="Dashboard views">
+          <ul>
+            <li>
+              <button type="button" class="menu-btn active" id="menu-btn-roadmap">
+                <span class="menu-icon">🛣</span> Roadmap Timeline
+              </button>
+            </li>
+            <li>
+              <button type="button" class="menu-btn" id="menu-btn-skills">
+                <span class="menu-icon">📊</span> Skill Competency
+              </button>
+            </li>
+            <li>
+              <button type="button" class="menu-btn" id="menu-btn-chat">
+                <span class="menu-icon">💬</span> Mentor Consultation
+              </button>
+            </li>
+          </ul>
+        </nav>
+
+        <footer class="sidebar-footer">
+          <button type="button" id="restart-btn" class="btn btn-secondary btn-full">
+            Restart Onboarding
+          </button>
+          <button type="button" id="print-btn" class="btn btn-primary btn-full">
+            Export Roadmap (PDF)
+          </button>
+        </footer>
+      </aside>
+
+      <!-- Main Dashboard Panels -->
+      <main class="dashboard-main">
+        <header class="dashboard-header glass-panel">
+          <div>
+            <h1 id="dashboard-role-title">Your Custom Roadmap</h1>
+            <p id="dashboard-role-desc">Customized learning plan generated specifically for your background.</p>
+          </div>
+          <div class="fit-score-badge">
+            <span class="fit-score-value" id="fit-score-number">95%</span>
+            <span class="fit-score-label">Role Compatibility</span>
+          </div>
+        </header>
+
+        <!-- PANEL 1: ROADMAP TIMELINE -->
+        <section id="panel-roadmap" class="dashboard-panel active">
+          <div class="roadmap-timeline" id="roadmap-timeline-container">
+            <!-- Dynamic roadmap phase cards will be injected here -->
+          </div>
+        </section>
+
+        <!-- PANEL 2: SKILL COMPETENCY MATRIX -->
+        <section id="panel-skills" class="dashboard-panel">
+          <div class="glass-panel card-panel">
+            <h2>Competency Matrix & Skill Progress</h2>
+            <p class="panel-intro-text">Keep track of the skills you master along your roadmap journey. Mark items off to update your overall capability tracker.</p>
+            
+            <div class="progress-container">
+              <div class="progress-bar-header">
+                <span>Overall Mastery Progress</span>
+                <span id="mastery-percent">0%</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-fill" id="mastery-progress-fill" style="width: 0%"></div>
+              </div>
+            </div>
+
+            <div class="skills-split-container">
+              <div class="skills-checklist-section">
+                <h3>Required Skills Checklist</h3>
+                <div id="skills-list-checkboxes" class="checklist-grid">
+                  <!-- Checkboxes of skills will be injected here -->
+                </div>
+              </div>
+              
+              <div class="skills-chart-section">
+                <h3>Skills Distribution</h3>
+                <div class="chart-mockup">
+                  <div class="chart-bar-group" id="chart-foundations-group">
+                    <div class="chart-label">Foundations</div>
+                    <div class="chart-bar-track">
+                      <div class="chart-bar-fill accent-gradient-1" id="chart-fill-foundations" style="width: 0%"></div>
+                    </div>
+                  </div>
+                  <div class="chart-bar-group" id="chart-tools-group">
+                    <div class="chart-label">Tools & APIs</div>
+                    <div class="chart-bar-track">
+                      <div class="chart-bar-fill accent-gradient-2" id="chart-fill-tools" style="width: 0%"></div>
+                    </div>
+                  </div>
+                  <div class="chart-bar-group" id="chart-advanced-group">
+                    <div class="chart-label">Advanced Concepts</div>
+                    <div class="chart-bar-track">
+                      <div class="chart-bar-fill accent-gradient-3" id="chart-fill-advanced" style="width: 0%"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PANEL 3: CHAT MENTOR CONSULTATION -->
+        <section id="panel-chat" class="dashboard-panel">
+          <div class="glass-panel chat-container">
+            <header class="chat-header">
+              <div class="avatar mentor-avatar">✦</div>
+              <div>
+                <h2>Astraea Virtual Mentor</h2>
+                <p class="status-indicator"><span class="pulse-dot"></span> Ready to advise you</p>
+              </div>
+            </header>
+
+            <div class="chat-messages" id="chat-messages-container">
+              <div class="message mentor-message">
+                <p>Hello! I am your Astraea virtual career guide. I've analyzed your profile and generated your study milestones.</p>
+                <p>What would you like to discuss? Click one of the quick topics below, or write your own question!</p>
+              </div>
+            </div>
+
+            <!-- Quick Topics -->
+            <div class="chat-quick-topics" id="chat-quick-topics-container">
+              <button type="button" class="quick-btn" data-query="salary">💵 Salary Outlook</button>
+              <button type="button" class="quick-btn" data-query="portfolio">📁 Portfolio Projects</button>
+              <button type="button" class="quick-btn" data-query="interview">📋 Interview Preparation</button>
+            </div>
+
+            <form id="chat-input-form" class="chat-input-form">
+              <label for="chat-message-input" class="visually-hidden">Ask the mentor a question</label>
+              <input type="text" id="chat-message-input" placeholder="Ask about study advice, internships, portfolios..." autocomplete="off" required>
+              <button type="submit" class="btn btn-accent chat-submit-btn">Send</button>
+            </form>
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
